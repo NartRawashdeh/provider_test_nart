@@ -1,7 +1,8 @@
-import 'dart:convert';
-
+//import 'dart:convert';
 //import 'package:api_test/screens/login_screen_2.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:provider_test/feature/login/controller/auth_provider.dart';
 // import '../core/const/api_const.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -12,8 +13,10 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  /*
   TextEditingController usernameField = TextEditingController();
   TextEditingController emailField = TextEditingController();
+  */
   TextEditingController phoneField = TextEditingController();
   TextEditingController passwordField = TextEditingController();
 
@@ -58,8 +61,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void initState() {
+    super.initState();
     // TODO: implement initState
-    //Login(phone: "0790718552", password: "123456");
   }
 
   @override
@@ -70,6 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            /*
             Row(
               children: [
                 Expanded(
@@ -90,6 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ],
             ),
+            */
             Row(
               children: [
                 Expanded(
@@ -118,7 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 4,
                       backgroundColor: Colors.blueAccent,
                     ),
-                    "Register",
+                    "Login",
                   ),
                   onTap: () {
                     // if (usernameField.text.isNotEmpty &&
@@ -132,6 +137,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     //     password: passwordField.text,
                     //   );
                     // }
+                    context.read<AuthProvider>().Login(
+                      phone: phoneField.text,
+                      password: passwordField.text,
+                    );
                   },
                 ),
               ],
